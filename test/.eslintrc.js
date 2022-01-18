@@ -1,3 +1,5 @@
+// eslint
+// 자바스크립트 코드가 타입 스크립트 코드를 검사해주는 역할을 한다.
 module.exports = {
   parser: '@typescript-eslint/parser',
   parserOptions: {
@@ -16,6 +18,7 @@ module.exports = {
   },
   ignorePatterns: ['.eslintrc.js'],
   rules: {
+    'no-console': 'error',
     '@typescript-eslint/interface-name-prefix': 'off',
     '@typescript-eslint/explicit-function-return-type': 'off',
     '@typescript-eslint/explicit-module-boundary-types': 'off',
