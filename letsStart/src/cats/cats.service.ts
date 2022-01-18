@@ -1,8 +1,9 @@
 import { Cat, CatType } from "./cats.model";
 import { Request, Response } from "express";
 
-// 전체 User 데이터 조회 -> GET
 //서비스 패턴을 통해 서비스 새성
+
+// 전체 User 데이터 조회 -> GET
 export const readAllcat = (req: Request, res: Response) => {
   try {
     const cats = Cat;
