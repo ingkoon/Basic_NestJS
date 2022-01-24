@@ -1,6 +1,6 @@
 import { Model } from 'mongoose';
 import { Cat, CatSchema } from './cats.schema';
-import { CatRequestDto } from './dto/cats.erquest.dto';
+import { CatRequestDto } from './dto/cats.request.dto';
 import { Injectable, UnauthorizedException } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import * as bcrypt from 'bcrypt';
