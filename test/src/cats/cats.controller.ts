@@ -1,5 +1,7 @@
+import { CatRequestDto } from './dto/cats.erquest.dto';
 import { SuccessInterceptor } from './../common/interceptors/success.interceptor';
 import {
+  Body,
   Controller,
   Delete,
   Get,
@@ -23,41 +25,29 @@ export class CatsController {
   //의존성을 전달받아 라우팅 수행
   constructor(private readonly catsService: CatsService) {}
 
-  // cats/
+  // 현재 로그인한 cat
   @Get()
-  getAllCat() {
-    // throw new HttpException({ success: false, message: 'api is broken' }, 401);
-    //   throw new HttpException('api broken', 401);
-    console.log('hello cats');
-    return { cats: ' get all cat api' };
+  getCurrentCat() {
+    return 'current cat';
   }
 
-  // cats/:id
-  @Get(':id')
-  //파이프로 데이터 유효성 검사 및 변환을 수행하여 서버가 원하는 데이터를 얻을 수 있도록 도와주는 클래스입니다.
-  getOneCat(@Param('id', ParseIntPipe) param: number) {
-    console.log(param);
-    console.log(typeof param);
-    return 'one cat';
+  @Post()
+  async signUp(@Body() body: CatRequestDto) {
+    return await this.catsService.signUp(body);
   }
 
-  @Post(':id')
-  createCat() {
-    return 'create cat';
+  @Post('login')
+  logIn() {
+    return 'login';
   }
 
-  @Put(':id')
-  updateCat() {
-    return '';
+  @Post('logout')
+  logOut() {
+    return 'logout';
   }
 
-  @Patch(':id')
-  updatePartialCat() {
-    return 'aa';
-  }
-
-  @Delete(':id')
-  deleteCat() {
-    return 'delete cat';
+  @Post('upload/cats')
+  uploadCatImg() {
+    return 'uploadimg';
   }
 }
