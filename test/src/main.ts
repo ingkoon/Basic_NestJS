@@ -19,6 +19,10 @@ async function bootstrap() {
   //swagger API의 엔드포인트 지정
   SwaggerModule.setup('docs', app, document);
   const PORT = process.env.PORT;
+  app.enableCors({
+    origin: true,
+    credentials: true,
+  });
   await app.listen(8000);
 }
 bootstrap();

@@ -4,7 +4,6 @@ import { SuccessInterceptor } from './../common/interceptors/success.interceptor
 import {
   Body,
   Controller,
-  Delete,
   Get,
   HttpException,
   Param,
