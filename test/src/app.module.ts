@@ -6,6 +6,7 @@ import { CatsModule } from './cats/cats.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import * as mongoose from 'mongoose';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from './auth/auth.module';
 
 @Module({
   imports: [
@@ -15,6 +16,7 @@ import { ConfigModule } from '@nestjs/config';
       useUnifiedTopology: true,
     }),
     CatsModule,
+    AuthModule,
   ],
   controllers: [AppController],
   // 프로바이더 클래스에 대한 의존성을 등록한다

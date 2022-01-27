@@ -1,3 +1,5 @@
+import { LoginRequestDto } from './../auth/dto/login.request.dto';
+import { AuthService } from 'src/auth/auth.service';
 import { ReadOnlyCatDto } from './dto/cat.dto';
 import { CatRequestDto } from './dto/cats.request.dto';
 import { SuccessInterceptor } from './../common/interceptors/success.interceptor';
@@ -24,7 +26,10 @@ import { ApiOperation, ApiResponse } from '@nestjs/swagger';
 @UseFilters(HttpExceptionFilter)
 export class CatsController {
   //의존성을 전달받아 라우팅 수행
-  constructor(private readonly catsService: CatsService) {}
+  constructor(
+    private readonly catsService: CatsService,
+    private readonly authService: AuthService,
+  ) {}
 
   // 현재 로그인한 cat
   @ApiOperation({ summary: '현재 고양이 가져오기' })
@@ -50,8 +55,8 @@ export class CatsController {
 
   @ApiOperation({ summary: '로그인' })
   @Post('login')
-  logIn() {
-    return 'login';
+  logIn(@Body() data: LoginRequestDto) {
+    return this.authService.jwtLogIn(data);
   }
   @ApiOperation({ summary: '로그아웃' })
   @Post('logout')
