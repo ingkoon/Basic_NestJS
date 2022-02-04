@@ -7,7 +7,8 @@ import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
-  app.useGlobalPipes(new ValidationPipe()); // 유효성검사를 위한 의존성 등록?
+  // dependency for class validations
+  app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new HttpExceptionFilter());
 
   const config = new DocumentBuilder()

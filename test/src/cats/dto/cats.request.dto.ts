@@ -7,4 +7,16 @@ export class CatRequestDto extends PickType(Cat, [
   'email',
   'password',
   'name',
-] as const) {}
+] as const) {
+  @IsEmail()
+  @IsNotEmpty()
+  email: string;
+
+  @IsEmail()
+  @IsNotEmpty()
+  password: string;
+
+  @IsEmail()
+  @IsNotEmpty()
+  name: string;
+}

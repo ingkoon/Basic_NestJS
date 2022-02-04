@@ -11,6 +11,7 @@ import { AuthModule } from './auth/auth.module';
 @Module({
   imports: [
     ConfigModule.forRoot(),
+    // process.env.~이런식으로 생성하면 된다.
     MongooseModule.forRoot(process.env.MONGODB_URI, {
       useNewUrlParser: true,
       useUnifiedTopology: true,
@@ -28,6 +29,7 @@ export class AppModule implements NestModule {
   configure(consumer: MiddlewareConsumer) {
     consumer.apply(LoggerMiddleware).forRoutes('*');
     // production 배포 시 false 지정해줄 것!
+    // mongodb의 로그를 확인하기 위한 작업
     mongoose.set('debug', this.isDev);
   }
 }

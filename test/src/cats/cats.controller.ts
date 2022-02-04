@@ -26,13 +26,14 @@ export class CatsController {
     private readonly authService: AuthService,
   ) {}
 
-  // 현재 로그인한 cat
+  // 현재 로그인한 cat 정보 API
   @ApiOperation({ summary: '현재 고양이 가져오기' })
   @Get()
   getCurrentCat() {
     return 'current cat';
   }
 
+  // 회원가입 API
   @ApiOperation({ summary: '회원가입' })
   @ApiResponse({
     status: 500,
@@ -48,16 +49,21 @@ export class CatsController {
     return await this.catsService.signUp(body);
   }
 
+  // 로그인 API
   @ApiOperation({ summary: '로그인' })
   @Post('login')
   logIn(@Body() data: LoginRequestDto) {
     return this.authService.jwtLogIn(data);
   }
+
+  // 로그아웃 API
   @ApiOperation({ summary: '로그아웃' })
   @Post('logout')
   logOut() {
     return 'logout';
   }
+
+  // 이미지 업로드 API
   @ApiOperation({ summary: '이미지 업로드' })
   @Post('upload/cats')
   uploadCatImg() {

@@ -19,6 +19,7 @@ export class Cat extends Document {
     required: true,
     unique: true,
   })
+  //validations
   @IsEmail()
   @IsNotEmpty()
   email: string;
@@ -61,7 +62,7 @@ export class Cat extends Document {
 }
 
 export const CatSchema = SchemaFactory.createForClass(Cat);
-
+// virtual화 시켜서 return값을 변경시킨다.
 CatSchema.virtual('readOnlyData').get(function (this: Cat) {
   return {
     id: this.id,
