@@ -7,6 +7,11 @@ public class StudentRepositoryMysql implements StudentRepository{
     }
 
     @Override
+    public void getData(Student student) {
+
+    }
+
+    @Override
     public void findByemail(Long email) {
 
     }
